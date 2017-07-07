@@ -3,9 +3,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { HttpModule } from "@angular/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'a2cb9a27'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -14,7 +21,9 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +33,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    RestapiServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
