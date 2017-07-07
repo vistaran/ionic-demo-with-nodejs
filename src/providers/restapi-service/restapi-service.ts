@@ -14,7 +14,7 @@ export class RestapiServiceProvider {
 
   constructor(public http: Http) {
   }
-  base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com';
+  base = 'http://localhost:3000';
 
   getTasks() {
     if (this.data) {
@@ -32,13 +32,14 @@ export class RestapiServiceProvider {
   }
 
   addTask(data) {
-  return new Promise((resolve, reject) => {
-    this.http.post(this.base + '/tasks', JSON.stringify(data))
-      .subscribe(res => {
-        resolve(res);
-      }, (err) => {
-        reject(err);
-      });
-  });
-}
+    console.log(data);
+    return new Promise((resolve, reject) => {
+      this.http.post(this.base + '/tasks', data)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }

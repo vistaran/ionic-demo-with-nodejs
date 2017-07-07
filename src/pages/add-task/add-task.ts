@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import {  } from "../home/";
+import { HomePage } from "../home/home";
 /**
  * Generated class for the AddTaskPage page.
  *
@@ -14,14 +14,13 @@ import {  } from "../home/";
   templateUrl: 'add-task.html',
 })
 export class AddTaskPage {
+  task = { "name": '' }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restapiService: RestapiServiceProvider) {
   }
-  task = { name: '', status: '' };
-
   addTask() {
     this.restapiService.addTask(this.task).then((result) => {
-      this.navCtrl.push(YourPage)
+      this.navCtrl.setRoot(HomePage)
     }, (err) => {
       console.log(err);
     });
