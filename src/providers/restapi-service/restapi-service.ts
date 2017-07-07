@@ -14,7 +14,7 @@ export class RestapiServiceProvider {
 
   constructor(public http: Http) {
   }
-  base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com/';
+  base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com';
 
   getTasks() {
     if (this.data) {
