@@ -8,12 +8,13 @@ import 'rxjs/add/operator/map';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
-@Injectexport class RestapiServiceProvider {
+@Injectable()
+export class RestapiServiceProvider {
   data: any;
 
   constructor(public http: Http) {
   }
-  base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com/';
+  base = 'http://http://ionicpoc-env.us-east-1.elasticbeanstalk.com/';
 
   getTasks() {
     if (this.data) {
