@@ -8,13 +8,12 @@ import 'rxjs/add/operator/map';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
-@Injectable()
-export class RestapiServiceProvider {
+@Injectexport class RestapiServiceProvider {
   data: any;
 
   constructor(public http: Http) {
   }
-  base = 'http://localhost:3000';
+  base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com/';
 
   getTasks() {
     if (this.data) {
@@ -24,10 +23,7 @@ export class RestapiServiceProvider {
     return new Promise(resolve => {
       this.http.get(this.base + '/tasks')
         .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        });
+
     });
   }
 

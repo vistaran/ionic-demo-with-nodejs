@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { App, NavController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AddTaskPage } from "../add-task/add-task";
@@ -17,4 +17,9 @@ export class HomePage {
       this.tasks = data;
     })
   }
+
+  ionViewDidLoad() {
+    this.getTasks();
+  }
+
 }
