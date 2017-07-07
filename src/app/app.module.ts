@@ -7,6 +7,7 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { HttpModule } from "@angular/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AddTaskPage } from "../pages/add-task/add-task";
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 const cloudSettings: CloudSettings = {
   'core': {
@@ -17,7 +18,8 @@ const cloudSettings: CloudSettings = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AddTaskPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ const cloudSettings: CloudSettings = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AddTaskPage
   ],
   providers: [
     StatusBar,

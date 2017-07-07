@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-
+import { AddTaskPage } from "../add-task/add-task";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   tasks: any;
+  addTaskPage = AddTaskPage;
   constructor(public navCtrl: NavController, public RestapiService: RestapiServiceProvider) {
     this.getTasks();
   }

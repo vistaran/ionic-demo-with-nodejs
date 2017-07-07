@@ -13,7 +13,6 @@ export class RestapiServiceProvider {
   data: any;
 
   constructor(public http: Http) {
-    console.log('Hello RestapiServiceProvider Provider');
   }
   base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com';
 
@@ -31,4 +30,15 @@ export class RestapiServiceProvider {
         });
     });
   }
+
+  addTask(data) {
+  return new Promise((resolve, reject) => {
+    this.http.post(this.base + '/tasks', JSON.stringify(data))
+      .subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+  });
+}
 }
