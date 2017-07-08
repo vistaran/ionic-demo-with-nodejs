@@ -12,12 +12,14 @@ export class HomePage {
   tasks: Task[]
   addTaskPage = AddTaskPage;
   constructor(public navCtrl: NavController, private restapiService: RestapiServiceProvider, public app: App) {
-    restapiService.getTasks().subscribe(res => {
+    this.getTasks();
+  }
+  getTasks() {
+    this.restapiService.getTasks().subscribe(res => {
       this.tasks = res;
     });
   }
   deleteTask(id) {
-    console.log(id);
     this.restapiService.deleteTask(id);
     this.tasks.splice(this.tasks.indexOf(id), 1);
   }
