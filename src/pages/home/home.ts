@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, NavController } from 'ionic-angular';
+import { App, NavController, AlertController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { AddTaskPage } from "../add-task/add-task";
 import { EditTaskPage } from "../edit-task/edit-task";
@@ -13,7 +13,7 @@ export class HomePage {
   tasks: Task[];
   task: {}
   addTaskPage = AddTaskPage;
-  constructor(public navCtrl: NavController, private restapiService: RestapiServiceProvider, public app: App) {
+  constructor(public navCtrl: NavController, private restapiService: RestapiServiceProvider, public app: App, private alertCtrl: AlertController) {
     this.getTasks();
   }
 
@@ -31,8 +31,26 @@ export class HomePage {
   }
 
   deleteTask(index, id) {
-    this.restapiService.deleteTask(id);
-    this.tasks.splice(index, 1);
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Are you sure you want to delete?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.restapiService.deleteTask(id);
+            this.tasks.splice(index, 1);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   doRefresh(refresher) {
