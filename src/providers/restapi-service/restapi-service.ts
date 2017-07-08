@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import { Task } from '../../models/Task';
 
-/*
-  Generated class for the RestapiServiceProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class RestapiServiceProvider {
   data: any;
@@ -16,19 +12,15 @@ export class RestapiServiceProvider {
   }
   base = 'http://ionicpoc-env.us-east-1.elasticbeanstalk.com';
 
-  getTasks() {
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-
-    return new Promise(resolve => {
-      this.http.get(this.base + '/tasks')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        });
-    });
+  getTasks(): Observable<Task[]> {
+    return this.http.get(this.base + '/tasks')
+      .map(res => <Task[]>res.json());
+  }
+  deleteTask(id) {
+    this.http.delete(this.base + '/tasks/' + id)
+      .subscribe(res => {
+      }, (err) => {
+      });
   }
 
   addTask(data) {

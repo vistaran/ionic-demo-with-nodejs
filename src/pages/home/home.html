@@ -7,18 +7,20 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Task List</h2>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
+  <h2>Task List</h2>
   <ion-card-content>
     <button [navPush]="addTaskPage">Add New Task</button>
   </ion-card-content>
   <ion-list>
     <ion-item *ngFor="let task of tasks">
-      {{task.name}}
-      <!--<button [navPush]="edittask/{{task._id}}">Edit Task</button>-->
+      <i>{{$index}}</i>
+      <p>{{task.name}}</p>
+      <p>{{task.status}}</p>
+      <button (click)="deleteTask(task._id)">Delete Task</button>
     </ion-item>
   </ion-list>
 </ion-content>
