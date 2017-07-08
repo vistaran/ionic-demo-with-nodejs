@@ -8,6 +8,10 @@
 
 <ion-content padding>
   <h2>Task List</h2>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card-content>
     <button [navPush]="addTaskPage">Add New Task</button>
   </ion-card-content>

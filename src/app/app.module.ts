@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AddTaskPage } from "../pages/add-task/add-task";
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
+import { Toast } from '@ionic-native/toast';
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': 'a2cb9a27'

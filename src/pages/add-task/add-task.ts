@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-import { HomePage } from "../home/home";
+import { Toast } from '@ionic-native/toast';
+
 /**
  * Generated class for the AddTaskPage page.
  *
@@ -16,14 +17,17 @@ import { HomePage } from "../home/home";
 export class AddTaskPage {
   task = { "name": '' }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public restapiService: RestapiServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restapiService: RestapiServiceProvider, public toastCtrl: ToastController) {
   }
   addTask() {
     this.restapiService.addTask(this.task).then((result) => {
-      this.navCtrl.setRoot(HomePage)
+      let toast = this.toastCtrl.create({
+        message: `Task Added to your List!`,
+        duration: 2000
+      });
+      toast.present();
     }, (err) => {
       console.log(err);
     });
   }
-
 }
