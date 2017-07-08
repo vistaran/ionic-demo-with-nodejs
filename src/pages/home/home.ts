@@ -19,9 +19,9 @@ export class HomePage {
       this.tasks = res;
     });
   }
-  deleteTask(id) {
+  deleteTask(index, id) {
     this.restapiService.deleteTask(id);
-    this.tasks.splice(this.tasks.indexOf(id), 1);
+    this.tasks.splice(index, 1);
   }
   doRefresh(refresher) {
     this.restapiService.getTasks().subscribe(res => {

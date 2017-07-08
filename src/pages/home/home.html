@@ -13,14 +13,21 @@
   </ion-refresher>
   <h2>Task List</h2>
   <ion-card-content>
-    <button [navPush]="addTaskPage">Add New Task</button>
+    <button ion-button color="secondary" [navPush]="addTaskPage"><ion-icon name="add-circle"></ion-icon>&nbsp; Add New Task</button>
   </ion-card-content>
-  <ion-list>
-    <ion-item *ngFor="let task of tasks">
-      <i>{{$index}}</i>
-      <p>{{task.name}}</p>
-      <p>{{task.status}}</p>
-      <button (click)="deleteTask(task._id)">Delete Task</button>
+  <ion-list no-lines>
+    <ion-list-header>
+      <ion-label>Id</ion-label>
+      <ion-label>Task Name</ion-label>
+      <ion-label>Status</ion-label>
+      <ion-label>Actions</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let task of tasks;index as i">
+      <ion-label>{{i+1}}</ion-label>
+      <ion-label>{{task.name}}</ion-label>
+      <ion-label>{{task.status}}</ion-label>
+      <ion-label><button ion-button small (click)="deleteTask(i, task._id)"><ion-icon name="create"></ion-icon>&nbsp; Edit</button>
+        <button ion-button color="danger" small (click)="deleteTask(i, task._id)"><ion-icon name="trash"></ion-icon>&nbsp; Delete</button></ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
