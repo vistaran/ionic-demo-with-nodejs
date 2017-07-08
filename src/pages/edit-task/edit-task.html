@@ -1,5 +1,5 @@
 <!--
-  Generated template for the AddTaskPage page.
+  Generated template for the EditTaskPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,15 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>addTask</ion-title>
+    <ion-title>EditTask</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2>Add Task</h2>
-  <form (ngSubmit)="addTask()">
+  <h2>Edit Task</h2>
+  <form (ngSubmit)="editTask(task)">
     <ion-item>
       <ion-label>Name</ion-label>
       <ion-input type="text" [(ngModel)]="task.name" name="name"></ion-input>
@@ -28,6 +28,6 @@
         <ion-option value="completed">Completed</ion-option>
       </ion-select>
     </ion-item>
-    <button ion-button type="submit" block>Add Task</button>
+    <button ion-button type="submit" block>Edit Task</button>
   </form>
 </ion-content>

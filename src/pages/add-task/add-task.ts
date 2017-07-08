@@ -21,7 +21,7 @@ export class AddTaskPage {
   }
   addTask() {
     this.restapiService.addTask(this.task).then((result) => {
-      
+      this.navCtrl.pop();
       let toast = this.toastCtrl.create({
         message: `Task Added to your List!`,
         duration: 2000

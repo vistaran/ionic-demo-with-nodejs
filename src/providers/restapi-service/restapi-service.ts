@@ -16,6 +16,17 @@ export class RestapiServiceProvider {
     return this.http.get(this.base + '/tasks')
       .map(res => <Task[]>res.json());
   }
+
+  getTask(id): Observable<Task[]> {
+    return this.http.get(this.base + '/tasks/' + id)
+      .map(res => <Task[]>res.json());
+  }
+
+  editTask(id, task): Observable<Task[]> {
+    return this.http.put(this.base + "/tasks/" + id, task)
+      .map(res => <Task[]>res.json());
+  }
+
   deleteTask(id) {
     this.http.delete(this.base + '/tasks/' + id)
       .subscribe(res => {

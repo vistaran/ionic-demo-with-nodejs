@@ -8,6 +8,7 @@ import { HttpModule } from "@angular/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AddTaskPage } from "../pages/add-task/add-task";
+import { EditTaskPageModule } from "../pages/edit-task/edit-task.module";
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 import { Toast } from '@ionic-native/toast';
 const cloudSettings: CloudSettings = {
@@ -25,6 +26,7 @@ const cloudSettings: CloudSettings = {
   imports: [
     BrowserModule,
     HttpModule,
+    EditTaskPageModule,
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings)
   ],

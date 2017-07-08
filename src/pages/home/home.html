@@ -26,7 +26,7 @@
       <ion-label>{{i+1}}</ion-label>
       <ion-label>{{task.name}}</ion-label>
       <ion-label>{{task.status}}</ion-label>
-      <ion-label><button ion-button small (click)="deleteTask(i, task._id)"><ion-icon name="create"></ion-icon>&nbsp; Edit</button>
+      <ion-label><button ion-button small (click)="editTask(task._id)"><ion-icon name="create"></ion-icon>&nbsp; Edit</button>
         <button ion-button color="danger" small (click)="deleteTask(i, task._id)"><ion-icon name="trash"></ion-icon>&nbsp; Delete</button></ion-label>
     </ion-item>
   </ion-list>
